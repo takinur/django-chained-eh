@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Django APP with Tailwind</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body
+    class="leading-normal tracking-normal text-gray-900"
+    style="font-family: 'Source Sans Pro', sans-serif"
+  >
+    <div class="w-full">
+      <!-- component -->
+      <section class="container mx-auto p-6 font-mono">
+        <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
+          <div class="w-full overflow-x-auto">
+            <table class="w-full">
+              <thead>
+                <tr
+                  class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600"
+                >
+                  <th class="px-4 py-3">#</th>
+                  <th class="px-4 py-3">ID</th>
+                  <th class="px-4 py-3">Name</th>
+                  <th class="px-4 py-3">Description</th>
+                  <th class="px-4 py-3">Unit Price</th>
+                  <th class="px-4 py-3">Date</th>
+                </tr>
+              </thead>
+              <tbody class="bg-white">
+                {% for prod in products %}
+                <tr class="text-gray-700">
+                  <td class="px-4 py-3 border">
+                    <div class="flex items-center text-sm">
+                      <p class="font-semibold text-black">{{ forloop.counter }}</p>
+                    </div>
+                  </td>
+                  <td class="px-4 py-3 text-ms font-semibold border">{{ prod.id }}</td>
+                  <td class="px-4 py-3 text-ms font-semibold border">{{ prod.product_name|title }}</td>
+                  <td class="px-4 py-3 text-ms font-semibold border">{{ prod.description }}</td>
+                  <td class="px-4 py-3 text-xs border">
+                    <span
+                      class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm"
+                    >
+                      {{ prod.unitprice }}
+                    </span>
+                  </td>
+                  <td class="px-4 py-3 text-sm border">6/4/2000</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
