@@ -21,7 +21,7 @@ python manage.py runserver
 👤 **Takinur**
 
 * Website: https://takinur.com
-* Twitter: [@\_Takinur](https://twitter.com/\_Takinur)
+* Twitter: [@\_Takinur](https://twitter.com/_Takinur)
 * Github: [@takinur](https://github.com/takinur)
 
 ## Show your support
