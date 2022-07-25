@@ -13,6 +13,15 @@
       href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700"
       rel="stylesheet"
     />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css"
+    />
   </head>
 
   <body
@@ -25,7 +34,7 @@
           class="flex flex-wrap items-center justify-between w-full py-4 md:py-0 px-4 text-lg text-slate-50 bg-slate-700"
         >
           <div>
-            <a href="#"> LOGO </a>
+            <a href="/"> LOGO </a>
           </div>
 
           <svg
@@ -52,8 +61,13 @@
               class="pt-4 text-base text-slate-50 md:flex md:justify-between md:pt-0"
             >
               <li>
-                <a href="#" class="md:p-4 py-2 block hover:text-purple-400"
+                <a href="/" class="md:p-4 py-2 block hover:text-purple-400"
                   >Home</a
+                >
+              </li>
+              <li>
+                <a href="/shopapp/list" class="md:p-4 py-2 block hover:text-purple-400"
+                  >List</a
                 >
               </li>
               <li>
@@ -73,5 +87,32 @@
 
       <div class="content">{% block content %} {% endblock content %}</div>
     </div>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+      integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
+
+    <script>
+      $(document).ready(function() {
+        $('#myTable').DataTable( {
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ]
+        } );
+    } );
+    </script>
   </body>
 </html>
