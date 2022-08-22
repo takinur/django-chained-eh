@@ -10,10 +10,11 @@
     >
       <div class="w-2 bg-gray-800"></div>
       <div class="flex items-center px-2 py-3">
-        <form class="w-full max-w-md" methods="POST" enctype="multipart/form-data">
+        {% load tailwind_filters %}
+
+        <form class="w-full max-w-md" action="" methods="POST" enctype="multipart/form-data">
           {% csrf_token %}
-          <div class="md:flex md:items-center mb-6">
-            {% load crispy_forms_tags %}
+          <div class=" mb-6">
             {{ form|crispy }}
           </div>
 

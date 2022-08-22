@@ -1,5 +1,3 @@
-from calendar import c
-from multiprocessing import context
 from django.shortcuts import get_object_or_404, redirect, render
 
 from myApp.forms import ProductForm
