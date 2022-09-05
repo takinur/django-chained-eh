@@ -46,7 +46,9 @@
                   <td class="px-4 py-3 text-sm border">{{ prod.quantity }}</td>
                   <td class="px-4 py-3 text-sm border">{{ prod.total_price }}</td>
                   <td class="px-4 py-3 text-sm border">{{ prod.category.category_name }}</td>
-                  <td class="px-4 py-3 text-sm border">EDIT -- Delete</td>
+                  <td class="px-4 py-3 text-sm border"> <a href="{% url 'editProduct' prod.id %}">
+                    EDIT </a>
+                     -- Delete</td>
                 </tr>
                 {% endfor %}
               </tbody>

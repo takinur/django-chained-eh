@@ -5,16 +5,13 @@
   </h1>
   <!-- component -->
   <section class="container mx-auto p-6 font-mono mt-8 bg-slate-200">
-    <div
-      class="flex max-w-sm w-full bg-white shadow-md rounded-lg overflow-hidden mx-auto"
-    >
-      <div class="w-2 bg-gray-800"></div>
-      <div class="flex items-center px-2 py-3">
+    
         {% load tailwind_filters %}
 
-        <form class="w-full max-w-md" action="" methods="POST" enctype="multipart/form-data">
-          {% csrf_token %}
+         <form class="w-full max-w-md"  method="POST" enctype="multipart/form-data">
+          {% csrf_token %} 
           <div class=" mb-6">
+            {% load crispy_forms_tags %}
             {{ form|crispy }}
           </div>
 
@@ -25,7 +22,7 @@
                 class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
                 type="submit"
               >
-                Add New Product
+                Save changes
               </button>
             </div>
           </div>
@@ -40,8 +37,6 @@
             </div>
           </div>
         </form>
-      </div>
-    </div>
   </section>
 </div>
 {% endblock content %}

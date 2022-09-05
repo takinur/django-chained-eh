@@ -32,7 +32,7 @@ def listProduct(request, category_slug=None):
 
 def createProduct(request):
     if request.method == "POST":
-        form = ProductForm(request.POST)
+        form = ProductForm(request.POST, request.FILES)
 
         if form.is_valid():
             form.save()
@@ -43,3 +43,21 @@ def createProduct(request):
     
     context = {'form': form, 'title' : 'Create new Product'}
     return render(request, 'ShopApp/createProduct.html', context)
+
+def editProduct(request, id):
+    products = Product.objects.all().order_by('id')
+    if request.method == 'POST':
+        
+        product = Product.objects.get(pk = id)
+        form = ProductForm(request.POST or None, request.FILES, instance=product)
+        
+        if form.is_valid():
+            print('OK')
+            form.save()
+            return redirect('list')
+    else:
+        product = Product.objects.get(pk=id)
+        form = ProductForm(request.POST or None, instance=product)
+        
+    context = {'title' : 'edit product', 'form' : form, 'products' : products}
+    return render(request, 'ShopAPP/createProduct.html', context)
