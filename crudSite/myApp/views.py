@@ -61,3 +61,8 @@ def editProduct(request, id):
         
     context = {'title' : 'edit product', 'form' : form, 'products' : products}
     return render(request, 'ShopAPP/createProduct.html', context)
+
+def deleteProduct(request, id):
+    product = Product.objects.get(pk=id)
+    product.delete()
+    return redirect('list')

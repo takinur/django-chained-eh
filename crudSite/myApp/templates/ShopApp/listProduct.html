@@ -1,60 +1,67 @@
-{% extends 'base.html' %}
-
-{% block content %}
-    <div class="w-full">
-      <h1 class="text-center font-extrabold text-4xl text-green-600 mt-4">
-        List of Products 
-      </h1>
-      <!-- component -->
-      <section class="container mx-auto p-6 font-mono">
-        <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
-          <div class="w-full overflow-x-auto">
-            <table class="w-full" id="myTable">
-              <thead>
-                <tr
-                  class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600"
+{% extends 'base.html' %} {% block content %}
+<div class="w-full">
+  <h1 class="text-center font-extrabold text-4xl text-green-600 mt-4">
+    List of Products
+  </h1>
+  <!-- component -->
+  <section class="container mx-auto p-6 font-mono">
+    <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
+      <div class="w-full overflow-x-auto">
+        <table class="w-full" id="myTable">
+          <thead>
+            <tr
+              class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600"
+            >
+              <th class="px-4 py-3">#</th>
+              <th class="px-4 py-3">ID</th>
+              <th class="px-4 py-3">Name</th>
+              <th class="px-4 py-3">Description</th>
+              <th class="px-4 py-3">Unit Price</th>
+              <th class="px-4 py-3">Quantity</th>
+              <th class="px-4 py-3">Total Price</th>
+              <th class="px-4 py-3">Category</th>
+              <th class="px-4 py-3">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="bg-white">
+            {% for prod in products %}
+            <tr class="text-gray-700">
+              <td class="px-4 py-3 border">
+                <div class="flex items-center text-sm">
+                  <p class="font-semibold text-black">{{ forloop.counter }}</p>
+                </div>
+              </td>
+              <td class="px-4 py-3 text-ms font-semibold border">
+                {{ prod.id }}
+              </td>
+              <td class="px-4 py-3 text-ms font-semibold border">
+                {{ prod.product_name|title }}
+              </td>
+              <td class="px-4 py-3 text-ms font-semibold border">
+                {{ prod.details }}
+              </td>
+              <td class="px-4 py-3 text-xs border">
+                <span
+                  class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm"
                 >
-                  <th class="px-4 py-3">#</th>
-                  <th class="px-4 py-3">ID</th>
-                  <th class="px-4 py-3">Name</th>
-                  <th class="px-4 py-3">Description</th>
-                  <th class="px-4 py-3">Unit Price</th>
-                  <th class="px-4 py-3">Quantity</th>
-                  <th class="px-4 py-3">Total Price</th>
-                  <th class="px-4 py-3">Category</th>
-                  <th class="px-4 py-3">Actions</th>
-                </tr>
-              </thead>
-              <tbody class="bg-white">
-                {% for prod in products %}
-                <tr class="text-gray-700">
-                  <td class="px-4 py-3 border">
-                    <div class="flex items-center text-sm">
-                      <p class="font-semibold text-black">{{ forloop.counter }}</p>
-                    </div>
-                  </td>
-                  <td class="px-4 py-3 text-ms font-semibold border">{{ prod.id }}</td>
-                  <td class="px-4 py-3 text-ms font-semibold border">{{ prod.product_name|title }}</td>
-                  <td class="px-4 py-3 text-ms font-semibold border">{{ prod.details }}</td>
-                  <td class="px-4 py-3 text-xs border">
-                    <span
-                      class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm"
-                    >
-                      {{ prod.unit_price }}
-                    </span>
-                  </td>
-                  <td class="px-4 py-3 text-sm border">{{ prod.quantity }}</td>
-                  <td class="px-4 py-3 text-sm border">{{ prod.total_price }}</td>
-                  <td class="px-4 py-3 text-sm border">{{ prod.category.category_name }}</td>
-                  <td class="px-4 py-3 text-sm border"> <a href="{% url 'editProduct' prod.id %}">
-                    EDIT </a>
-                     -- Delete</td>
-                </tr>
-                {% endfor %}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
+                  {{ prod.unit_price }}
+                </span>
+              </td>
+              <td class="px-4 py-3 text-sm border">{{ prod.quantity }}</td>
+              <td class="px-4 py-3 text-sm border">{{ prod.total_price }}</td>
+              <td class="px-4 py-3 text-sm border">
+                {{ prod.category.category_name }}
+              </td>
+              <td class="px-4 py-3 text-sm border">
+                <a href="{% url 'editProduct' prod.id %}"> EDIT </a> --
+                <a href="{% url 'deleteProduct' prod.id %}"> Delete </a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
     </div>
+  </section>
+</div>
 {% endblock content %}
